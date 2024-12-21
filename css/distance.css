@@ -1,0 +1,968 @@
+body {
+  /* Add this if not already present */
+  position: relative;
+  min-height: 100vh;
+}
+
+.container {
+  position: relative;
+  contain: none;
+  transform: none;
+  /* Make sure no transform or other properties are creating a new stacking context */
+}
+.year-grid {
+  display: grid;
+  position: relative;
+  overflow: visible;
+  grid-template-columns: repeat(19, 1fr);
+  gap: 2px;
+  max-width: 800px;
+  margin: 6rem 5rem;
+  contain: none;
+  transform: none;
+}
+
+.day {
+  aspect-ratio: 1;
+  border: 1px solid #ccc;
+  position: relative;
+  overflow: visible;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.thought {
+  display: none;
+  position: fixed;
+  border: 1px solid #ccc;
+  top: 70%; /* Shift down from 50% */
+  left: 50%;
+  transform: translate(-50%, 0%);
+  background: rgba(255, 255, 255, 0.9);
+  color: rgb(53, 53, 53);
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+  z-index: 99999;
+  max-width: 80vw;
+  margin: 0;
+  cursor: auto; /* Show cursor again */
+}
+
+.day::after {
+  display: none;
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 99998;
+  cursor: auto; /* Show cursor again */
+}
+
+.day:focus .thought,
+.day:active .thought,
+.day:focus::after,
+.day:active::after {
+  display: block;
+}
+
+.day:hover {
+  transform: scale(1.1);
+  border: 3px solid #ccc;
+
+  z-index: 1;
+}
+
+/* ./* For days near the left edge */
+.day:nth-child(-n + 3) .thought {
+  left: 0;
+  transform-origin: left bottom;
+}
+
+/* For days near the right edge */
+/* .day:nth-last-child(-n + 3) .thought {
+  right: 0; */
+/* left: 0; */
+/* transform-origin: right bottom; */
+/* } */
+
+/* Center days */
+/* .day:not(:nth-child(-n + 3)):not(:nth-last-child(-n + 3)) .thought {
+  left: 50%;
+  transform: translateX(-50%);
+} */
+*/ .day:hover {
+  transform: scale(1.2);
+  z-index: 1;
+}
+
+.day:hover .thought {
+  display: block;
+}
+
+.day:hover::before {
+  content: attr(data-miles) " miles";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 2; /* Make sure it's above the day but below the modal */
+}
+
+/* Move the modal backdrop to ::after if not already done */
+.day::after {
+  display: none;
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99998;
+  cursor: auto;
+}
+
+/* Add thought tooltip */
+
+/* Color gradient based on miles */
+.final-row {
+  grid-column: 1 / 5;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+
+.home-nav {
+  position: relative;
+  top: 1rem;
+  left: 1rem;
+  z-index: 100;
+}
+
+.home-link {
+  display: inline-block;
+  padding: 0.5rem;
+  color: #000;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.home-link:hover,
+.home-link:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.home-icon {
+  display: block;
+}
+.day[data-miles="0.0"] {
+  background: rgb(255, 255, 255);
+}
+
+.day[data-miles="0.1"] {
+  background: rgb(253, 254, 254);
+}
+
+.day[data-miles="0.2"] {
+  background: rgb(252, 253, 253);
+}
+
+.day[data-miles="0.3"] {
+  background: rgb(251, 252, 252);
+}
+
+.day[data-miles="0.4"] {
+  background: rgb(249, 251, 251);
+}
+
+.day[data-miles="0.5"] {
+  background: rgb(248, 250, 250);
+}
+
+.day[data-miles="0.6"] {
+  background: rgb(247, 249, 249);
+}
+
+.day[data-miles="0.7"] {
+  background: rgb(246, 248, 248);
+}
+
+.day[data-miles="0.8"] {
+  background: rgb(244, 247, 247);
+}
+
+.day[data-miles="0.9"] {
+  background: rgb(243, 246, 246);
+}
+
+.day[data-miles="1.0"] {
+  background: rgb(242, 245, 245);
+}
+
+.day[data-miles="1.1"] {
+  background: rgb(240, 244, 244);
+}
+
+.day[data-miles="1.2"] {
+  background: rgb(239, 243, 243);
+}
+
+.day[data-miles="1.3"] {
+  background: rgb(238, 242, 243);
+}
+
+.day[data-miles="1.4"] {
+  background: rgb(237, 241, 242);
+}
+
+.day[data-miles="1.5"] {
+  background: rgb(235, 240, 241);
+}
+
+.day[data-miles="1.6"] {
+  background: rgb(234, 239, 240);
+}
+
+.day[data-miles="1.7"] {
+  background: rgb(233, 238, 239);
+}
+
+.day[data-miles="1.8"] {
+  background: rgb(232, 237, 238);
+}
+
+.day[data-miles="1.9"] {
+  background: rgb(230, 236, 237);
+}
+
+.day[data-miles="2.0"] {
+  background: rgb(229, 235, 236);
+}
+
+.day[data-miles="2.1"] {
+  background: rgb(228, 234, 235);
+}
+
+.day[data-miles="2.2"] {
+  background: rgb(226, 233, 234);
+}
+
+.day[data-miles="2.3"] {
+  background: rgb(225, 232, 233);
+}
+
+.day[data-miles="2.4"] {
+  background: rgb(224, 231, 232);
+}
+
+.day[data-miles="2.5"] {
+  background: rgb(223, 230, 232);
+}
+
+.day[data-miles="2.6"] {
+  background: rgb(221, 229, 231);
+}
+
+.day[data-miles="2.7"] {
+  background: rgb(220, 228, 230);
+}
+
+.day[data-miles="2.8"] {
+  background: rgb(219, 227, 229);
+}
+
+.day[data-miles="2.9"] {
+  background: rgb(218, 227, 228);
+}
+
+.day[data-miles="3.0"] {
+  background: rgb(216, 226, 227);
+}
+
+.day[data-miles="3.1"] {
+  background: rgb(215, 225, 226);
+}
+
+.day[data-miles="3.2"] {
+  background: rgb(214, 224, 225);
+}
+
+.day[data-miles="3.3"] {
+  background: rgb(212, 223, 224);
+}
+
+.day[data-miles="3.4"] {
+  background: rgb(211, 222, 223);
+}
+
+.day[data-miles="3.5"] {
+  background: rgb(210, 221, 222);
+}
+
+.day[data-miles="3.6"] {
+  background: rgb(209, 220, 221);
+}
+
+.day[data-miles="3.7"] {
+  background: rgb(207, 219, 220);
+}
+
+.day[data-miles="3.8"] {
+  background: rgb(206, 218, 220);
+}
+
+.day[data-miles="3.9"] {
+  background: rgb(205, 217, 219);
+}
+
+.day[data-miles="4.0"] {
+  background: rgb(204, 216, 218);
+}
+
+.day[data-miles="4.1"] {
+  background: rgb(202, 215, 217);
+}
+
+.day[data-miles="4.2"] {
+  background: rgb(201, 214, 216);
+}
+
+.day[data-miles="4.3"] {
+  background: rgb(200, 213, 215);
+}
+
+.day[data-miles="4.4"] {
+  background: rgb(198, 212, 214);
+}
+
+.day[data-miles="4.5"] {
+  background: rgb(197, 211, 213);
+}
+
+.day[data-miles="4.6"] {
+  background: rgb(196, 210, 212);
+}
+
+.day[data-miles="4.7"] {
+  background: rgb(195, 209, 211);
+}
+
+.day[data-miles="4.8"] {
+  background: rgb(193, 208, 210);
+}
+
+.day[data-miles="4.9"] {
+  background: rgb(192, 207, 209);
+}
+
+.day[data-miles="5.0"] {
+  background: rgb(191, 206, 209);
+}
+
+.day[data-miles="5.1"] {
+  background: rgb(189, 205, 208);
+}
+
+.day[data-miles="5.2"] {
+  background: rgb(188, 204, 207);
+}
+
+.day[data-miles="5.3"] {
+  background: rgb(187, 203, 206);
+}
+
+.day[data-miles="5.4"] {
+  background: rgb(186, 202, 205);
+}
+
+.day[data-miles="5.5"] {
+  background: rgb(184, 201, 204);
+}
+
+.day[data-miles="5.6"] {
+  background: rgb(183, 200, 203);
+}
+
+.day[data-miles="5.7"] {
+  background: rgb(182, 199, 202);
+}
+
+.day[data-miles="5.8"] {
+  background: rgb(181, 199, 201);
+}
+
+.day[data-miles="5.9"] {
+  background: rgb(179, 198, 200);
+}
+
+.day[data-miles="6.0"] {
+  background: rgb(178, 197, 199);
+}
+
+.day[data-miles="6.1"] {
+  background: rgb(177, 196, 198);
+}
+
+.day[data-miles="6.2"] {
+  background: rgb(175, 195, 197);
+}
+
+.day[data-miles="6.3"] {
+  background: rgb(174, 194, 197);
+}
+
+.day[data-miles="6.4"] {
+  background: rgb(173, 193, 196);
+}
+
+.day[data-miles="6.5"] {
+  background: rgb(172, 192, 195);
+}
+
+.day[data-miles="6.6"] {
+  background: rgb(170, 191, 194);
+}
+
+.day[data-miles="6.7"] {
+  background: rgb(169, 190, 193);
+}
+
+.day[data-miles="6.8"] {
+  background: rgb(168, 189, 192);
+}
+
+.day[data-miles="6.9"] {
+  background: rgb(167, 188, 191);
+}
+
+.day[data-miles="7.0"] {
+  background: rgb(165, 187, 190);
+}
+
+.day[data-miles="7.1"] {
+  background: rgb(164, 186, 189);
+}
+
+.day[data-miles="7.2"] {
+  background: rgb(163, 185, 188);
+}
+
+.day[data-miles="7.3"] {
+  background: rgb(161, 184, 187);
+}
+
+.day[data-miles="7.4"] {
+  background: rgb(160, 183, 186);
+}
+
+.day[data-miles="7.5"] {
+  background: rgb(159, 182, 186);
+}
+
+.day[data-miles="7.6"] {
+  background: rgb(158, 181, 185);
+}
+
+.day[data-miles="7.7"] {
+  background: rgb(156, 180, 184);
+}
+
+.day[data-miles="7.8"] {
+  background: rgb(155, 179, 183);
+}
+
+.day[data-miles="7.9"] {
+  background: rgb(154, 178, 182);
+}
+
+.day[data-miles="8.0"] {
+  background: rgb(153, 177, 181);
+}
+
+.day[data-miles="8.1"] {
+  background: rgb(151, 176, 180);
+}
+
+.day[data-miles="8.2"] {
+  background: rgb(150, 175, 179);
+}
+
+.day[data-miles="8.3"] {
+  background: rgb(149, 174, 178);
+}
+
+.day[data-miles="8.4"] {
+  background: rgb(147, 173, 177);
+}
+
+.day[data-miles="8.5"] {
+  background: rgb(146, 172, 176);
+}
+
+.day[data-miles="8.6"] {
+  background: rgb(145, 172, 175);
+}
+
+.day[data-miles="8.7"] {
+  background: rgb(144, 171, 174);
+}
+
+.day[data-miles="8.8"] {
+  background: rgb(142, 170, 174);
+}
+
+.day[data-miles="8.9"] {
+  background: rgb(141, 169, 173);
+}
+
+.day[data-miles="9.0"] {
+  background: rgb(140, 168, 172);
+}
+
+.day[data-miles="9.1"] {
+  background: rgb(138, 167, 171);
+}
+
+.day[data-miles="9.2"] {
+  background: rgb(137, 166, 170);
+}
+
+.day[data-miles="9.3"] {
+  background: rgb(136, 165, 169);
+}
+
+.day[data-miles="9.4"] {
+  background: rgb(135, 164, 168);
+}
+
+.day[data-miles="9.5"] {
+  background: rgb(133, 163, 167);
+}
+
+.day[data-miles="9.6"] {
+  background: rgb(132, 162, 166);
+}
+
+.day[data-miles="9.7"] {
+  background: rgb(131, 161, 165);
+}
+
+.day[data-miles="9.8"] {
+  background: rgb(130, 160, 164);
+}
+
+.day[data-miles="9.9"] {
+  background: rgb(128, 159, 163);
+}
+
+.day[data-miles="10.0"] {
+  background: rgb(127, 158, 163);
+}
+
+.day[data-miles="10.1"] {
+  background: rgb(126, 157, 162);
+}
+
+.day[data-miles="10.2"] {
+  background: rgb(124, 156, 161);
+}
+
+.day[data-miles="10.3"] {
+  background: rgb(123, 155, 160);
+}
+
+.day[data-miles="10.4"] {
+  background: rgb(122, 154, 159);
+}
+
+.day[data-miles="10.5"] {
+  background: rgb(121, 153, 158);
+}
+
+.day[data-miles="10.6"] {
+  background: rgb(119, 152, 157);
+}
+
+.day[data-miles="10.7"] {
+  background: rgb(118, 151, 156);
+}
+
+.day[data-miles="10.8"] {
+  background: rgb(117, 150, 155);
+}
+
+.day[data-miles="10.9"] {
+  background: rgb(116, 149, 154);
+}
+
+.day[data-miles="11.0"] {
+  background: rgb(114, 148, 153);
+}
+
+.day[data-miles="11.1"] {
+  background: rgb(113, 147, 152);
+}
+
+.day[data-miles="11.2"] {
+  background: rgb(112, 146, 151);
+}
+
+.day[data-miles="11.3"] {
+  background: rgb(110, 145, 151);
+}
+
+.day[data-miles="11.4"] {
+  background: rgb(109, 144, 150);
+}
+
+.day[data-miles="11.5"] {
+  background: rgb(108, 144, 149);
+}
+
+.day[data-miles="11.6"] {
+  background: rgb(107, 143, 148);
+}
+
+.day[data-miles="11.7"] {
+  background: rgb(105, 142, 147);
+}
+
+.day[data-miles="11.8"] {
+  background: rgb(104, 141, 146);
+}
+
+.day[data-miles="11.9"] {
+  background: rgb(103, 140, 145);
+}
+
+.day[data-miles="12.0"] {
+  background: rgb(102, 139, 144);
+}
+
+.day[data-miles="12.1"] {
+  background: rgb(100, 138, 143);
+}
+
+.day[data-miles="12.2"] {
+  background: rgb(99, 137, 142);
+}
+
+.day[data-miles="12.3"] {
+  background: rgb(98, 136, 141);
+}
+
+.day[data-miles="12.4"] {
+  background: rgb(96, 135, 140);
+}
+
+.day[data-miles="12.5"] {
+  background: rgb(95, 134, 140);
+}
+
+.day[data-miles="12.6"] {
+  background: rgb(94, 133, 139);
+}
+
+.day[data-miles="12.7"] {
+  background: rgb(93, 132, 138);
+}
+
+.day[data-miles="12.8"] {
+  background: rgb(91, 131, 137);
+}
+
+.day[data-miles="12.9"] {
+  background: rgb(90, 130, 136);
+}
+
+.day[data-miles="13.0"] {
+  background: rgb(89, 129, 135);
+}
+
+.day[data-miles="13.1"] {
+  background: rgb(87, 128, 134);
+}
+
+.day[data-miles="13.2"] {
+  background: rgb(86, 127, 133);
+}
+
+.day[data-miles="13.3"] {
+  background: rgb(85, 126, 132);
+}
+
+.day[data-miles="13.4"] {
+  background: rgb(84, 125, 131);
+}
+
+.day[data-miles="13.5"] {
+  background: rgb(82, 124, 130);
+}
+
+.day[data-miles="13.6"] {
+  background: rgb(81, 123, 129);
+}
+
+.day[data-miles="13.7"] {
+  background: rgb(80, 122, 128);
+}
+
+.day[data-miles="13.8"] {
+  background: rgb(79, 121, 128);
+}
+
+.day[data-miles="13.9"] {
+  background: rgb(77, 120, 127);
+}
+
+.day[data-miles="14.0"] {
+  background: rgb(76, 119, 126);
+}
+
+.day[data-miles="14.1"] {
+  background: rgb(75, 118, 125);
+}
+
+.day[data-miles="14.2"] {
+  background: rgb(73, 117, 124);
+}
+
+.day[data-miles="14.3"] {
+  background: rgb(72, 117, 123);
+}
+
+.day[data-miles="14.4"] {
+  background: rgb(71, 116, 122);
+}
+
+.day[data-miles="14.5"] {
+  background: rgb(70, 115, 121);
+}
+
+.day[data-miles="14.6"] {
+  background: rgb(68, 114, 120);
+}
+
+.day[data-miles="14.7"] {
+  background: rgb(67, 113, 119);
+}
+
+.day[data-miles="14.8"] {
+  background: rgb(66, 112, 118);
+}
+
+.day[data-miles="14.9"] {
+  background: rgb(65, 111, 117);
+}
+
+.day[data-miles="15.0"] {
+  background: rgb(63, 110, 117);
+}
+
+.day[data-miles="15.1"] {
+  background: rgb(62, 109, 116);
+}
+
+.day[data-miles="15.2"] {
+  background: rgb(61, 108, 115);
+}
+
+.day[data-miles="15.3"] {
+  background: rgb(59, 107, 114);
+}
+
+.day[data-miles="15.4"] {
+  background: rgb(58, 106, 113);
+}
+
+.day[data-miles="15.5"] {
+  background: rgb(57, 105, 112);
+}
+
+.day[data-miles="15.6"] {
+  background: rgb(56, 104, 111);
+}
+
+.day[data-miles="15.7"] {
+  background: rgb(54, 103, 110);
+}
+
+.day[data-miles="15.8"] {
+  background: rgb(53, 102, 109);
+}
+
+.day[data-miles="15.9"] {
+  background: rgb(52, 101, 108);
+}
+
+.day[data-miles="16.0"] {
+  background: rgb(51, 100, 107);
+}
+
+.day[data-miles="16.1"] {
+  background: rgb(49, 99, 106);
+}
+
+.day[data-miles="16.2"] {
+  background: rgb(48, 98, 105);
+}
+
+.day[data-miles="16.3"] {
+  background: rgb(47, 97, 105);
+}
+
+.day[data-miles="16.4"] {
+  background: rgb(45, 96, 104);
+}
+
+.day[data-miles="16.5"] {
+  background: rgb(44, 95, 103);
+}
+
+.day[data-miles="16.6"] {
+  background: rgb(43, 94, 102);
+}
+
+.day[data-miles="16.7"] {
+  background: rgb(42, 93, 101);
+}
+
+.day[data-miles="16.8"] {
+  background: rgb(40, 92, 100);
+}
+
+.day[data-miles="16.9"] {
+  background: rgb(39, 91, 99);
+}
+
+.day[data-miles="17.0"] {
+  background: rgb(38, 90, 98);
+}
+
+.day[data-miles="17.1"] {
+  background: rgb(36, 89, 97);
+}
+
+.day[data-miles="17.2"] {
+  background: rgb(35, 89, 96);
+}
+
+.day[data-miles="17.3"] {
+  background: rgb(34, 88, 95);
+}
+
+.day[data-miles="17.4"] {
+  background: rgb(33, 87, 94);
+}
+
+.day[data-miles="17.5"] {
+  background: rgb(31, 86, 94);
+}
+
+.day[data-miles="17.6"] {
+  background: rgb(30, 85, 93);
+}
+
+.day[data-miles="17.7"] {
+  background: rgb(29, 84, 92);
+}
+
+.day[data-miles="17.8"] {
+  background: rgb(28, 83, 91);
+}
+
+.day[data-miles="17.9"] {
+  background: rgb(26, 82, 90);
+}
+
+.day[data-miles="18.0"] {
+  background: rgb(25, 81, 89);
+}
+
+.day[data-miles="18.1"] {
+  background: rgb(24, 80, 88);
+}
+
+.day[data-miles="18.2"] {
+  background: rgb(22, 79, 87);
+}
+
+.day[data-miles="18.3"] {
+  background: rgb(21, 78, 86);
+}
+
+.day[data-miles="18.4"] {
+  background: rgb(20, 77, 85);
+}
+
+.day[data-miles="18.5"] {
+  background: rgb(19, 76, 84);
+}
+
+.day[data-miles="18.6"] {
+  background: rgb(17, 75, 83);
+}
+
+.day[data-miles="18.7"] {
+  background: rgb(16, 74, 82);
+}
+
+.day[data-miles="18.8"] {
+  background: rgb(15, 73, 82);
+}
+
+.day[data-miles="18.9"] {
+  background: rgb(14, 72, 81);
+}
+
+.day[data-miles="19.0"] {
+  background: rgb(12, 71, 80);
+}
+
+.day[data-miles="19.1"] {
+  background: rgb(11, 70, 79);
+}
+
+.day[data-miles="19.2"] {
+  background: rgb(10, 69, 78);
+}
+
+.day[data-miles="19.3"] {
+  background: rgb(8, 68, 77);
+}
+
+.day[data-miles="19.4"] {
+  background: rgb(7, 67, 76);
+}
+
+.day[data-miles="19.5"] {
+  background: rgb(6, 66, 75);
+}
+
+.day[data-miles="19.6"] {
+  background: rgb(5, 65, 74);
+}
+
+.day[data-miles="19.7"] {
+  background: rgb(3, 64, 73);
+}
+
+.day[data-miles="19.8"] {
+  background: rgb(2, 63, 72);
+}
+
+.day[data-miles="19.9"] {
+  background: rgb(1, 62, 71);
+}
+
+.day[data-miles="20.0"] {
+  background: rgb(1, 62, 71);
+}

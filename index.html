@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>stream of me</title>
+  </head>
+  <body>
+    <main>
+      <nav class="nav-circle" role="navigation" aria-label="Site navigation">
+        <!-- Desktop circle connections -->
+        <svg class="connections" viewBox="0 0 400 400" aria-hidden="true">
+          <!-- From birds -->
+          <line x1="200" y1="50" x2="350" y2="150"></line>
+          <line x1="200" y1="50" x2="350" y2="250"></line>
+          <line x1="200" y1="50" x2="200" y2="350"></line>
+          <line x1="200" y1="50" x2="50" y2="250"></line>
+          <line x1="200" y1="50" x2="50" y2="150"></line>
+          <!-- From walking -->
+          <line x1="350" y1="150" x2="350" y2="250"></line>
+          <line x1="350" y1="150" x2="200" y2="350"></line>
+          <line x1="350" y1="150" x2="50" y2="250"></line>
+          <line x1="350" y1="150" x2="50" y2="150"></line>
+          <!-- From meditations -->
+          <line x1="350" y1="250" x2="200" y2="350"></line>
+          <line x1="350" y1="250" x2="50" y2="250"></line>
+          <line x1="350" y1="250" x2="50" y2="150"></line>
+          <!-- From mandalas -->
+          <line x1="200" y1="350" x2="50" y2="250"></line>
+          <line x1="200" y1="350" x2="50" y2="150"></line>
+          <!-- From cinquains -->
+          <line x1="50" y1="250" x2="50" y2="150"></line>
+        </svg>
+
+        <div class="nav-container">
+          <a href="/birds" class="nav-item" data-node="birds">birds</a>
+          <a href="/distance" class="nav-item" data-node="walking">distance</a>
+          <a href="/meditations" class="nav-item" data-node="meditations"
+            >meditations</a
+          >
+          <a href="/mandalas" class="nav-item" data-node="mandalas">mandalas</a>
+          <a href="/cinquains" class="nav-item" data-node="cinquains"
+            >cinquains</a
+          >
+          <a href="/journal" class="nav-item" data-node="journal">journal</a>
+        </div>
+
+        <!-- For screen readers -->
+        <div class="screen-reader-content">
+          <ul>
+            <li><a href="/birds">Bird Sightings</a></li>
+            <li><a href="/distance">Distance on Foot</a></li>
+            <li><a href="/meditations">Daily Meditations</a></li>
+            <li><a href="/mandalas">Mandala Sets</a></li>
+            <li><a href="/cinquains">Cinquain Poetry</a></li>
+            <li><a href="/journal">Daily Journal</a></li>
+          </ul>
+        </div>
+      </nav>
+    </main>
+  </body>
+</html>

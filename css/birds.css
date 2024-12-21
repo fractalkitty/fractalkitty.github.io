@@ -1,0 +1,70 @@
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.stats-card {
+  background: #f8f8f8;
+  border: 2px solid #000;
+  border-radius: 4px;
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 4rem;
+  margin: 4rem 2rem;
+}
+
+.stats-card h1 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.stats-count {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.stats-date {
+  color: #666;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.bird-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bird-card {
+  border: 2px solid #000;
+  border-radius: 4px;
+  padding: 1rem;
+  background: white;
+}
+
+.bird-card h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.sighting-count {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  color: #666;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.bird-card:hover .sighting-count {
+  opacity: 1;
+}
+
+/* For touch devices, always show the count */
+@media (hover: none) {
+  .sighting-count {
+    opacity: 1;
+  }
+}
