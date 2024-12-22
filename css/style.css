@@ -7,7 +7,15 @@ body {
     Arial, sans-serif;
 }
 
-/* Navigation container */
+h2,
+h3 {
+  display: inline-block;
+  margin: 0px auto;
+  padding-top: 5px;
+  width: 100%;
+  text-align: center;
+}
+
 .nav-circle {
   min-height: 100vh;
   display: flex;
@@ -17,7 +25,6 @@ body {
   padding: 1rem;
 }
 
-/* SVG connections */
 .connections {
   position: absolute;
   width: 400px;
@@ -31,22 +38,19 @@ body {
   transition: stroke 0.2s;
 }
 
-/* Main navigation container */
 .nav-container {
   position: relative;
   width: 400px;
   height: 400px;
 }
 
-/* Navigation items */
-/* Update the circle size and text styles */
 .nav-item {
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80px; /* Increased from 60px */
-  height: 80px; /* Increased from 60px */
+  width: 80px;
+  height: 80px;
   border: 2px solid black;
   border-radius: 50%;
   background: white;
@@ -54,12 +58,10 @@ body {
   color: black;
   transform: translate(-50%, -50%);
   transition: background-color 0.2s;
-  font-size: 0.9rem; /* Add explicit font size */
+  font-size: 0.9rem;
   text-align: center;
   padding: 0.5rem;
 }
-
-/* Rest of the CSS stays the same */
 
 .nav-item:hover,
 .nav-item:focus {
@@ -68,43 +70,41 @@ body {
   outline-offset: 2px;
 }
 
-/* Keep the original CSS but update these position values */
-
 /* Circle positioning */
 .nav-item:nth-child(1) {
   /* birds */
-  top: 25px; /* moved up from 50px */
+  top: 25px;
   left: 200px;
 }
 
 .nav-item:nth-child(2) {
   /* walking */
-  top: 125px; /* moved up from 150px */
-  left: 375px; /* moved right from 350px */
+  top: 125px;
+  left: 375px;
 }
 
 .nav-item:nth-child(3) {
   /* meditations */
-  top: 275px; /* moved down from 250px */
-  left: 375px; /* moved right from 350px */
+  top: 275px;
+  left: 375px;
 }
 
 .nav-item:nth-child(4) {
-  /* mandalas */
-  top: 375px; /* moved down from 350px */
+  /* icons */
+  top: 375px;
   left: 200px;
 }
 
 .nav-item:nth-child(5) {
   /* cinquains */
-  top: 275px; /* moved down from 250px */
-  left: 25px; /* moved left from 50px */
+  top: 275px;
+  left: 25px;
 }
 
 .nav-item:nth-child(6) {
   /* journal */
-  top: 125px; /* moved up from 150px */
-  left: 25px; /* moved left from 50px */
+  top: 125px;
+  left: 25px;
 }
 
 /* Screen reader only content */
@@ -120,7 +120,7 @@ body {
 }
 
 /* Mobile layout */
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .connections {
     display: none;
   }
@@ -149,16 +149,15 @@ body {
 .nav-item[data-node="birds"]:hover ~ .connections line,
 .nav-item[data-node="walking"]:hover ~ .connections line,
 .nav-item[data-node="meditations"]:hover ~ .connections line,
-.nav-item[data-node="mandalas"]:hover ~ .connections line,
+.nav-item[data-node="icons"]:hover ~ .connections line,
 .nav-item[data-node="cinquains"]:hover ~ .connections line,
 .nav-item[data-node="journal"]:hover ~ .connections line {
   stroke: rgba(0, 0, 0, 0.8);
   stroke-width: 2;
 }
 .home-nav {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
+  position: flex;
+  margin: 20px 5px;
   z-index: 100;
 }
 
