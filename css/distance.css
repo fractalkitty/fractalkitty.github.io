@@ -14,6 +14,7 @@ h2 {
   contain: none;
   transform: none;
   margin: auto;
+  text-align: center;
 }
 .year-grid {
   display: grid;
@@ -25,6 +26,7 @@ h2 {
   margin: 4rem auto;
   contain: none;
   transform: none;
+  text-align: center;
 }
 
 .day {
@@ -121,31 +123,6 @@ h2 {
   gap: 2px;
 }
 
-.home-nav {
-  position: relative;
-  top: 1rem;
-  left: 1rem;
-  z-index: 100;
-}
-
-.home-link {
-  display: inline-block;
-  padding: 0.5rem;
-  color: #000;
-  border-radius: 50%;
-  transition: background-color 0.2s;
-}
-
-.home-link:hover,
-.home-link:focus {
-  background-color: rgba(0, 0, 0, 0.1);
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
-}
-
-.home-icon {
-  display: block;
-}
 /* Color gradient based on kms generated with python */
 .day[data-kms="0.0"] {
   background: rgb(255, 255, 255);

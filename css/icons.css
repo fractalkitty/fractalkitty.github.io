@@ -8,9 +8,13 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  display: block;
+  max-width: 600px;
   margin: 2rem auto;
   padding: 0 1rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Icon grid */
@@ -19,6 +23,8 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 2rem;
   padding: 1rem;
+  margin: auto;
+  text-align: center;
 }
 
 /* Icon card */
@@ -78,7 +84,7 @@ body {
   }
 
   .icon-grid {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    /* grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); */
     gap: 1rem;
   }
 

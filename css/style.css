@@ -156,8 +156,10 @@ h3 {
   stroke-width: 2;
 }
 .home-nav {
-  position: flex;
-  margin: 20px 5px;
+  position: inline-block;
+  width: 100%;
+  text-align: center;
+  margin: 20px auto;
   z-index: 100;
 }
 
