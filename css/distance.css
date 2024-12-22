@@ -13,6 +13,7 @@ h2 {
   position: relative;
   contain: none;
   transform: none;
+  margin: auto;
 }
 .year-grid {
   display: grid;
@@ -20,8 +21,8 @@ h2 {
   overflow: visible;
   grid-template-columns: repeat(19, 1fr);
   gap: 2px;
-  max-width: 800px;
-  margin: 4rem 5rem;
+  max-width: 600px;
+  margin: 4rem auto;
   contain: none;
   transform: none;
 }
