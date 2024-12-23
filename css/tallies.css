@@ -49,9 +49,9 @@ h2 {
   margin: 0;
   font-size: 2rem;
   padding: 5px;
-  letter-spacing: 1em;
+  letter-spacing: 0.1em;
   line-height: 1;
-  font-family: "Symbols", monospace !important; /* Replace with your font name */
+  font-family: "Symbols", monospace !important;
 }
 
 /* Responsive adjustments */

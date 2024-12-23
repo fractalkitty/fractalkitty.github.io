@@ -34,3 +34,38 @@ h2 {
   margin: 0;
   line-height: 1.6;
 }
+
+.entry img {
+  display: flex;
+  background: black;
+  max-width: 300px;
+  margin: auto;
+  padding: 1rem;
+  box-shadow: 2px 2px 2px 2px rgb(183, 183, 183);
+  cursor: pointer;
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox:target {
+  display: flex;
+}
+
+.lightbox img {
+  max-height: 90vh;
+  max-width: 90vw;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+}
