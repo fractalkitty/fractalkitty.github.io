@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(50, 60, 80);
+  display: grid;
+}
+
+.home-nav {
+  position: inline-block;
+  width: 100%;
+  text-align: center;
+  margin: 20px auto;
+  z-index: 100;
+}
+
+.home-link {
+  display: inline-block;
+  padding: 0.5rem;
+  color: white;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.home-link:hover,
+.home-link:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.home-icon {
+  display: block;
+}
+
+.sketch {
+}
