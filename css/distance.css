@@ -1,6 +1,7 @@
 body {
   position: relative;
   min-height: 100vh;
+  background: rgb(245, 250, 255);
 }
 
 h2 {
@@ -125,6 +126,10 @@ h2 {
 }
 
 /* Color gradient based on kms generated with python */
+.day {
+  background: rgb(255, 255, 255);
+}
+
 .day[data-kms="0.0"] {
   background: rgb(255, 255, 255);
 }

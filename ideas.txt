@@ -12,5 +12,3 @@ word of the week
 books devoured
 melodies written and improv recording?
 
-no js - only html/css, but python to update maybe.
-

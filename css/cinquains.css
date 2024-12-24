@@ -5,13 +5,14 @@ body {
   min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
-  background-color: #fafafa;
+  background-color: rgb(230, 235, 240);
 }
 
 .container {
   max-width: 500px;
   margin: 2rem auto;
   padding: 0 1rem;
+  font-size: 1.2em;
 }
 
 /* Cinquains container */

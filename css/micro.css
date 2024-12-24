@@ -21,6 +21,7 @@ h2 {
   box-shadow: 2px 5px 5px 2px rgb(183, 183, 183);
   padding: 1rem;
   margin: 0;
+  background: white;
 }
 
 .entry time {
@@ -37,7 +38,7 @@ h2 {
 
 .entry img {
   display: flex;
-  background: black;
+  background: rgb(20, 30, 40);
   max-width: 300px;
   margin: auto;
   padding: 1rem;
@@ -52,7 +53,7 @@ h2 {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgb(20, 30, 40, 0.9);
   z-index: 999;
   align-items: center;
   justify-content: center;

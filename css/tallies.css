@@ -36,6 +36,7 @@ h2 {
   box-shadow: 2px 5px 5px 2px rgb(183, 183, 183);
   border-left: 5px solid rgba(85, 85, 85, 0.513);
   padding-left: 1rem;
+  background: white;
 }
 
 .category h2 {
@@ -47,7 +48,8 @@ h2 {
 .tally,
 .count1 {
   margin: 0;
-  font-size: 2rem;
+  font-size: 2.3rem;
+
   padding: 5px;
   letter-spacing: 0.1em;
   line-height: 1;
@@ -65,6 +67,6 @@ h2 {
   }
 
   .tally {
-    font-size: 1.2rem;
+    font-size: 2rem;
   }
 }
