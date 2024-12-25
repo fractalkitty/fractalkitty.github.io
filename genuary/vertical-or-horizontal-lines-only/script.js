@@ -1,6 +1,11 @@
 let w, n;
 function setup() {
-  cnv = createCanvas((w = 500), w);
+  w = min(windowWidth * 0.9, 500);
+  canvas = createCanvas(w, w);
+  canvas.parent("sketch-container");
+  describe(
+    "tile with quadrant symmetry with patterns drawn using all horizontal and vertical lines. Some are feather-like, geometrical, or clover-like. "
+  );
   stroke(50, 60, 80);
   rectMode(CENTER);
 
@@ -51,7 +56,18 @@ function draw() {
 }
 
 function mousePressed() {
+  setup();
   draw();
+  return false;
+}
+function touchStarted() {
+  if (mouseY < 0 || mouseY > height || mouseX < 0 || mouseX > width) {
+    return true; // Let the touch event pass through to other elements
+  }
+  setup();
+  draw();
+  // Prevent default touch behavior
+  return false;
 }
 
 function keyPressed() {
