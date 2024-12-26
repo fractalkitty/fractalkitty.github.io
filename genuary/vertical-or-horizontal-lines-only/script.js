@@ -7,12 +7,8 @@ function setup() {
     "tile with quadrant symmetry with patterns drawn using all horizontal and vertical lines. Some are feather-like, geometrical, or clover-like. "
   );
   stroke(50, 60, 80);
-  rectMode(CENTER);
-
   noLoop();
-
   strokeWeight(0.5);
-  frameRate(2);
 }
 
 function draw() {
@@ -20,6 +16,9 @@ function draw() {
   translate(w / 2, w / 2);
 
   n = int(randomGaussian(10, 50));
+  if (n === 0) {
+    n = 10;
+  }
   background(230, 235, 240);
   for (let j = 0; j < 4; j++) {
     push();
