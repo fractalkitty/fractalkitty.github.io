@@ -8,9 +8,9 @@ body {
 }
 
 .container {
-  display: block;
-  max-width: 600px;
-  margin: 2rem auto;
+  /* display: block; */
+  /* max-width: 600px; */
+  margin: 0px;
   padding: 0 1rem;
   text-align: center;
   align-items: center;
@@ -20,11 +20,14 @@ body {
 /* Icon grid */
 .icon-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(3, 150px);
   gap: 2rem;
   padding: 1rem;
   margin: auto;
   text-align: center;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Icon card */
@@ -40,6 +43,7 @@ body {
   position: relative;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
+  max-width: 200px;
 }
 
 .icon-card:hover,
@@ -84,7 +88,21 @@ body {
   }
 
   .icon-grid {
-    /* grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); */
+    grid-template-columns: repeat(3, 100px);
+    gap: 1rem;
+  }
+
+  .icon {
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 380px) {
+  .container {
+    margin-top: 4rem;
+  }
+
+  .icon-grid {
+    grid-template-columns: repeat(1, 150px);
     gap: 1rem;
   }
 
