@@ -1,12 +1,13 @@
 .container {
-  max-width: 400px;
+  max-width: 350px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
 
 .stats-card {
   background: #f8f8f8;
-  border: 2px solid #888;
+  /* border: 2px solid #888; */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border-radius: 9px;
   padding: 1rem;
   text-align: center;
@@ -39,7 +40,8 @@
 }
 
 .bird-card {
-  border: 2px solid #888;
+  /* border: 2px solid #888; */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border-radius: 9px;
   padding: 0.5rem;
   background: white;

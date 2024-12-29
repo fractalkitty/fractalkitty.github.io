@@ -35,7 +35,8 @@ h2 {
 /* Individual category styling */
 .category {
   box-shadow: 2px 5px 5px 2px rgb(183, 183, 183);
-  border-left: 5px solid rgba(85, 85, 85, 0.513);
+  border-radius: 8px;
+  /* border-left: 5px solid rgba(85, 85, 85, 0.513); */
   padding-left: 1rem;
   background: white;
 }
