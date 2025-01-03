@@ -71,6 +71,6 @@ function touchStarted() {
 
 function keyPressed() {
   if (keyCode === 83) {
-    save(cnv, "tile", "jpg");
+    save(canvas, "tile", "jpg");
   }
 }

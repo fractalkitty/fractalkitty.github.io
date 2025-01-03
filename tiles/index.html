@@ -48,7 +48,8 @@
     <script>
       function createGrid() {
         const grid = document.querySelector(".grid");
-        const tileNumber = 7; // Hard-coded to tile 7 for testing
+        const hour = new Date().getHours();
+        const tileNumber = hour % 24 || 9;
         let gridContent = "";
         for (let i = 0; i < 25; i++) {
           gridContent += `
@@ -61,7 +62,6 @@
       }
       document.addEventListener("DOMContentLoaded", createGrid);
     </script>
-
     <footer>
       <a
         href="../genuary/vertical-or-horizontal-lines-only/index.html"

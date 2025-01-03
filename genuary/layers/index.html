@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../css/style.css" />
     <link rel="stylesheet" href="../../css/tiles.css" />
-    <title>Daily Notice | stream of me</title>
+    <title>layers</title>
     <style>
       .tile img {
         transition: transform 0.3s ease;
@@ -13,17 +13,12 @@
     </style>
   </head>
   <body>
-    <!-- Home navigation -->
     <nav
       class="home-nav"
       role="navigation"
       aria-label="Return to main navigation"
     >
-      <a
-        href="../../index.html"
-        class="home-link"
-        aria-label="Return to homepage"
-      >
+      <a href="../index.html" class="home-link" aria-label="Return to homepage">
         <svg
           viewBox="0 0 24 24"
           width="24"
@@ -48,38 +43,29 @@
     </nav>
     <main class="container">
       <h2>Layers upon layers upon layers</h2>
-      <p>...and then woven</p>
+      <p>...and then woven and rotated</p>
+      <p>[hourly tiles]</p>
       <div class="grid">
         <div class="tile">
-          <a href="#lightbox00"><img src="layer (1).jpg" alt="Tile 1" /></a>
-          <div id="lightbox00" class="lightbox">
-            <a href="#"><img src="layer (1).jpg" alt="Tile 1" /></a>
-          </div>
+          <img src="layer (7).jpg" alt="Tile 1" />
         </div>
       </div>
     </main>
     <script>
       function createGrid() {
         const grid = document.querySelector(".grid");
+        const hour = new Date().getHours();
+        const tileNumber = hour % 24 || 9;
         let gridContent = "";
-
-        // Create 25 tiles with unique images from 1 to 25 and rotating each one
-        for (let i = 1; i <= 25; i++) {
-          const rotation = i * 90; // Multiply tile number by 90 degrees
+        for (let i = 0; i < 25; i++) {
+          const rotation = i * 90; // Each tile rotates 90 degrees more than the previous one
           gridContent += `
             <div class="tile">
-              <a href="#lightbox0${i}">
-                <img 
-                  src="layer (${i}).jpg" 
-                  alt="Tile ${i}" 
-                  style="transform: rotate(${rotation}deg);"
-                />
-              </a>
-              <div id="lightbox0${i}" class="lightbox">
-                <a href="#">
-                  <img src="layer (${i}).jpg" alt="Tile ${i}" />
-                </a>
-              </div>
+              <img 
+                src="layer (${tileNumber}).jpg" 
+                alt="Tile ${i + 1}" 
+                style="transform: rotate(${rotation}deg);"
+              />
             </div>
           `;
         }
