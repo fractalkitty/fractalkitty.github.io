@@ -14,7 +14,7 @@
   height: 100%;
   object-fit: cover;
   padding: 0;
-  box-shadow: 2px 2px 2px 2px rgb(50, 60, 80, 0.4);
+  /* box-shadow: 2px 2px 2px 2px rgb(50, 60, 80, 0.4); */
 }
 
 .lightbox {

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/tiles.css" />
+    <title>Daily Notice | stream of me</title>
+    <style>
+      .tile img {
+        transition: transform 0.3s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Home navigation -->
+    <nav
+      class="home-nav"
+      role="navigation"
+      aria-label="Return to main navigation"
+    >
+      <a
+        href="../../index.html"
+        class="home-link"
+        aria-label="Return to homepage"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+          aria-hidden="true"
+          class="home-icon"
+        >
+          <path
+            d="M12 3L4 9v12h16V9l-8-6z"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+          />
+          <path
+            d="M9 22v-8h6v8"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+          />
+        </svg>
+      </a>
+    </nav>
+    <main class="container">
+      <h2>Layers upon layers upon layers</h2>
+      <p>...and then woven</p>
+      <div class="grid">
+        <div class="tile">
+          <a href="#lightbox0"><img src="layer (1).jpg" alt="Tile 1" /></a>
+          <div id="lightbox0" class="lightbox">
+            <a href="#"><img src="layer (1).jpg" alt="Tile 1" /></a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      function createGrid() {
+        const grid = document.querySelector(".grid");
+        let gridContent = "";
+
+        // Create 25 tiles with unique images from 1 to 25 and rotating each one
+        for (let i = 1; i <= 25; i++) {
+          const rotation = i * 90; // Multiply tile number by 90 degrees
+          gridContent += `
+            <div class="tile">
+              <a href="#lightbox${i}">
+                <img 
+                  src="layer (${i}).jpg" 
+                  alt="Tile ${i}" 
+                  style="transform: rotate(${rotation}deg);"
+                />
+              </a>
+              <div id="lightbox${i}" class="lightbox">
+                <a href="#">
+                  <img src="layer (${i}).jpg" alt="Tile ${i}" />
+                </a>
+              </div>
+            </div>
+          `;
+        }
+        grid.innerHTML = gridContent;
+      }
+      document.addEventListener("DOMContentLoaded", createGrid);
+    </script>
+    <footer>
+      <a href="layers.html" class="tile-link">
+        <img src="layer (23).jpg" alt="Tiles page" />
+      </a>
+    </footer>
+  </body>
+</html>
