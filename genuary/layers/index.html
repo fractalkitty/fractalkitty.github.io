@@ -51,8 +51,8 @@
       <p>...and then woven</p>
       <div class="grid">
         <div class="tile">
-          <a href="#lightbox0"><img src="layer (1).jpg" alt="Tile 1" /></a>
-          <div id="lightbox0" class="lightbox">
+          <a href="#lightbox00"><img src="layer (1).jpg" alt="Tile 1" /></a>
+          <div id="lightbox00" class="lightbox">
             <a href="#"><img src="layer (1).jpg" alt="Tile 1" /></a>
           </div>
         </div>
@@ -68,14 +68,14 @@
           const rotation = i * 90; // Multiply tile number by 90 degrees
           gridContent += `
             <div class="tile">
-              <a href="#lightbox${i}">
+              <a href="#lightbox0${i}">
                 <img 
                   src="layer (${i}).jpg" 
                   alt="Tile ${i}" 
                   style="transform: rotate(${rotation}deg);"
                 />
               </a>
-              <div id="lightbox${i}" class="lightbox">
+              <div id="lightbox0${i}" class="lightbox">
                 <a href="#">
                   <img src="layer (${i}).jpg" alt="Tile ${i}" />
                 </a>
