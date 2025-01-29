@@ -1,5 +1,6 @@
 from numbers_parser import Document
 from datetime import datetime
+import random
 
 
 def create_birds_html():
@@ -360,10 +361,149 @@ def create_micro_html():
 
     print("HTML generation complete")
 
+def generate_tally_letter(category, value):
+    if category == 'Sun':
+        # Only generate a letter if there is a value
+        if value and isinstance(value, str) and value.strip():
+            if value.strip().lower() == 'cloudy':
+                return 'T'
+            elif value.strip().lower() == 'sun':
+                return random.choice(['S', 'V'])
+            return  random.choice(['S', 'V']) # For any other non-empty values
+        return ''  # Return empty string for empty cells
+            
+    elif category == 'Moon':
+        # Map moon phases to letters
+        moon_map = {
+            'half': 'C',
+            'half-ish': 'C',
+            'full': 'E',
+            'sliver-right': 'F',
+            'sliver-left': 'D',
+            'new': 'E',
+        }
+        if value and isinstance(value, str):
+            for key in moon_map:
+                if key.lower() in value.lower():
+                    return moon_map[key]
+        return ''  # Empty for no moon
+        
+    elif category == 'Played Music':
+        if value and isinstance(value, str) and value.strip():
+            return random.choice(['n', 'o', 'p', 'q'])
+        return ''
+        
+    elif category == 'Stretch':
+        if value and isinstance(value, str) and value.strip():
+            return random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'])
+        return ''
+        
+    elif category == 'Trees Talked to':
+        if value and isinstance(value, str) and value.strip():
+            return random.choice(['K', 'L', 'M'])
+        return ''
+    
+    return ''
+
+def format_tally_string(letters):
+    # Remove empty strings and format into groups of 5
+    letters = [l for l in letters if l]
+    groups = []
+    for i in range(0, len(letters), 5):
+        group = letters[i:i+5]
+        if group:  # Only add non-empty groups
+            groups.append(''.join(group))
+    return ' . '.join(groups)
+
+def create_tallies_html():
+    print("Starting Tallies HTML generation...")
+    
+    header = '''<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/tallies.css" />
+  <title>Daily Notice | stream of me</title>
+</head>
+
+<body>
+  <nav class="home-nav" role="navigation" aria-label="Return to main navigation">
+    <a href="../index.html" class="home-link" aria-label="Return to homepage">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="home-icon">
+        <path d="M12 3L4 9v12h16V9l-8-6z" stroke="currentColor" stroke-width="2" fill="none" />
+        <path d="M9 22v-8h6v8" stroke="currentColor" stroke-width="2" fill="none" />
+      </svg>
+    </a>
+  </nav>
+
+  <main class="container">
+    <div class="observations">'''
+
+    footer = '''
+    </div>
+  </main>
+</body>
+</html>'''
+
+    with open('./tallies/index.html', 'w') as f:
+        f.write(header)
+        
+    doc = Document('./streamof.numbers')
+    categories = {
+        'Sun': 'sun rise awareness',
+        'Moon': 'glimpses of the moon',
+        'Trees Talked to': 'tree talked to',
+        'Played Music': 'music played',
+        'Stretch': 'stretchy days'
+    }
+    
+    for sheet in doc.sheets:
+        if sheet.name == 'Tallies':
+            table = sheet.tables[0]
+            print(f"Found Tallies sheet with {len(table.rows())} rows")
+            
+            # Get column indices
+            headers = table.rows()[0]
+            col_indices = {cell.value: i for i, cell in enumerate(headers) if hasattr(cell, 'value')}
+            
+            # Process each category
+            for category, title in categories.items():
+                if category in col_indices:
+                    tally_letters = []
+                    data_rows = table.rows()[1:]  # Skip header row
+                    
+                    for row in data_rows:
+                        value = row[col_indices[category]].value if hasattr(row[col_indices[category]], 'value') else None
+                        letter = generate_tally_letter(category, value)
+                        if letter:
+                            tally_letters.append(letter)
+                    
+                    if tally_letters:
+                        tally_string = format_tally_string(tally_letters)
+                        count = len(tally_letters)
+                        
+                        category_html = f'''
+      <div class="category">
+        <h2>{title}</h2>
+        <p class="tally" aria-label="{count} {title}">{tally_string}</p>
+      </div>'''
+                        
+                        with open('./tallies/index.html', 'a') as f:
+                            f.write(category_html)
+
+    with open('./tallies/index.html', 'a') as f:
+        f.write(footer)
+
+    print("HTML generation complete")
+    
 if __name__ == "__main__":
     create_birds_html()
     create_cinquains_html()
     create_distance_html()
     create_micro_html()
+    create_tallies_html()
 
     
