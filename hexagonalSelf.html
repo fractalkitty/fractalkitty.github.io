@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Hexagonal Self (Taper #14)</title>
+
+    <!-- “Hexagonal Self” Copyright (C) 2024 Sophia Wood
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright 
+notice and this notice are preserved. This file is offered as-is,
+without any warranty.
+
+This is from Taper #14: Sonnets, Spring 2025:
+
+https://taper.badquar.to/14/title_of_your_work.html
+
+... "I am a mathy artist that loves to play with the connections between math, art, and nature."
+
+*** BEGIN TEMPLATE INSTRUCTIONS ***
+* All poem code goes between the closing header and closing body tags
+below, and must not exceed 2KB (2048 bytes).
+* Without removing any template punctuation, insert your author name,
+poem title, and poem filename throughout the template, making sure your
+text, capitalization, and punctuation is consistent across the file.
+* Insert your creative statement above, wrapped to 72 characters, and 
+using typographical quotes “” and apostrophes ‘’.
+* Do not modify the template in any other way.
+*** END TEMPLATE INSTRUCTIONS ***
+
+-->
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden
+        }
+
+        a {
+            color: #eee;
+            text-decoration: none
+        }
+
+        header {
+            margin: 0;
+            padding: 0;
+            background-color: #444;
+            color: #bbb;
+            position: relative;
+            z-index: 1000
+        }
+
+        header>h1 {
+            margin: 0;
+            font-size: 12px;
+            font-family: sans-serif;
+            border-bottom: 1px #999 solid;
+            padding: 5px 10px;
+            line-height: 17px
+        }
+    </style>
+</head>
+
+<body>
+    <header id="nav">
+        <h1>
+            <a href="prev.html">&lt;&lt;</a> &nbsp;
+            <a href="index.html">Taper #14 :
+                TBA</a> : Spring 2025 &nbsp;
+            <a href="next.html">&gt;&gt;</a><br>
+            <a href="title_of_your_work.html">“Title”</a> by
+            <a href="about.html#authorlastname">Author</a>
+        </h1>
+    </header>
+    <div style="justify-items: center;">
+        <svg touch-action: "none" ; width="600" height="600" id="puzzle">
+            <path fill="none" stroke="#ccc"
+                d="M150,286.6025 L200,200 L250,286.6025 Z M100,200 L200,200 L150,286.6025 Z M150,113.3975 L200,200 L100,200 Z M150,113.3975 L250,113.3975 L200,200 Z M250,113.3975 L300,200 L200,200 Z M300,200 L250,286.6025 L200,200 Z M150,286.6025 L150,113.3975 L300,200 Z M250,286.6025 L250,113.3975 L100,200 Z M200,142.265 L150,113.3975 L150,171.1325 Z M100,200 L150,171.1325 L150,228.8675 Z M150,286.6025 L150,228.8675 L200,257.735 Z M250,286.6025 L200,257.735 L250,228.8675 Z M250,228.8675 L250,171.1325 L300,200 Z M200,142.265 L250,113.3975 L250,171.1325 Z">
+            </path>
+        </svg>
+        <div id="poem"
+            style="font-size: 16px; max-width: 600px; white-space: pre-line; position: absolute; top: 400px; right: 20%; padding: 10px; user-select: none;">
+        </div>
+    </div>
+    </div>
+    <script>
+        const T = ["M150,286.6025 L200,200 L250,286.6025 Z", "M100,200 L200,200 L150,286.6025 Z", "M150,113.3975 L200,200 L100,200 Z", "M150,113.3975 L250,113.3975 L200,200 Z", "M250,113.3975 L300,200 L200,200 Z", "M300,200 L250,286.6025 L200,200 Z", "M150,286.6025 L150,113.3975 L300,200 Z", "M250,286.6025 L250,113.3975 L100,200 Z", "M200,142.265 L150,113.3975 L150,171.1325 Z", "M100,200 L150,171.1325 L150,228.8675 Z", "M150,286.6025 L150,228.8675 L200,257.735 Z", "M250,286.6025 L200,257.735 L250,228.8675 Z", "M250,228.8675 L250,171.1325 L300,200 Z", "M200,142.265 L250,113.3975 L250,171.1325 Z"], L = ["With the hexagon of self, you begin.", "And connect the vertices that you find.", "Seek out the intersections from within.", "For they will make new shapes of self-defined.", "Triangles formed with perfect symmetries,", "Six of them obvious and known before,", "Six of them hidden like small mysteries,", "Two embrace — a hexagon at the core.", "Sometimes these pieces scatter all around,", "And the essence of self feels lost and torn.", "But to a gravity within they're bound,", "And when placed again a different self is born.", "Like a big bounce or oscillating spring,", "You construct the hexagon of being."], P = new Set, O = new Map, S = document.getElementById("puzzle"), E = document.getElementById("poem"), N = new Set, g = e => { const t = S.createSVGPoint(); return t.x = e.clientX, t.y = e.clientY, t.matrixTransform(S.getScreenCTM().inverse()) }, f = (e, t) => { let n, s = 1 / 0; return N.forEach((r => { const [o, a] = r.split(",").map(Number), i = o - e, c = a - t, m = Math.sqrt(i * i + c * c); m < 20 && m < s && (s = m, n = { x: o, y: a }) })), n }; let s, o = { x: 0, y: 0 }; const k = e => e.map((e => `${Math.round(e.x)},${Math.round(e.y)}`)).sort().join("|"), c = (e, t) => { const n = k(e); return O.has(n) && O.get(n) !== t }, u = () => { const e = Array(14).fill(" "); P.forEach((t => e[t] = L[t])), E.textContent = e.join("\n") }, m = e => { if (!s) return; e.preventDefault(); const t = g(e); if (!t) return; const n = t.x - o.x - 200, r = t.y - o.y - 200, a = s.vertices[0], i = a.x + n, c = a.y + r, m = f(i, c); m ? s.setAttribute("transform", `translate(${m.x - a.x},${m.y - a.y})`) : s.setAttribute("transform", `translate(${n},${r})`) }, r = (e, t) => { const [n, s] = t.match(/translate\(([-\d.]+),\s*([-\d.]+)\)/).slice(1).map(Number), r = e.vertices.map((e => ({ x: e.x + n, y: e.y + s }))); if (c(r, parseInt(e.dataset.index))) return !1; const o = r.every((e => Array.from(N).some((t => { const [n, s] = t.split(",").map(Number); return Math.abs(e.x - n) < 5 && Math.abs(e.y - s) < 5 })))); if (o) { const t = k(r); O.set(t, parseInt(e.dataset.index)) } return o }, h = e => { e.preventDefault(); const t = e.touches[0]; m(new MouseEvent("mousemove", { clientX: t.clientX, clientY: t.clientY })) }, n = e => { if (!s) return; const t = s.getAttribute("transform"), o = r(s, t), a = parseInt(s.dataset.index); o ? P.add(a) : P.delete(a), u(), s = null, document.removeEventListener("mousemove", m), document.removeEventListener("touchmove", h), document.removeEventListener("mouseup", n), document.removeEventListener("touchend", n) }, d = e => { if (!e.target.classList.contains("triangle")) return; s = e.target; const t = s.getAttribute("transform").match(/translate\(([-\d.]+),\s*([-\d.]+)\)/), r = parseFloat(t[1]), a = parseFloat(t[2]), i = g(e); i && (o = { x: i.x - r - 200, y: i.y - a - 200 }), document.addEventListener("mousemove", m), document.addEventListener("touchmove", h, { passive: !1 }), document.addEventListener("mouseup", n), document.addEventListener("touchend", n) }, t = e => { e.preventDefault(); const t = e.touches[0]; d(new MouseEvent("mousedown", { clientX: t.clientX, clientY: t.clientY })) }; T.forEach(((e, n) => { const s = document.createElementNS("http://www.w3.org/2000/svg", "path"); s.setAttribute("d", e), s.setAttribute("class", "triangle"), s.setAttribute("fill", "rgba(25, 150, 255, .2)"), s.setAttribute("cursor", "move"), s.dataset.index = n, s.vertices = e.match(/[0-9.]+,[0-9.]+/g).map((e => { const [t, n] = e.split(",").map(Number); return { x: t, y: n } })); const r = 300 * Math.random() + 100, o = 200 * Math.random() + 100; s.setAttribute("transform", `translate(${r - 200},${o - 200})`), S.appendChild(s), s.addEventListener("mousedown", d), s.addEventListener("touchstart", t, { passive: !1 }) })), T.forEach((e => { e.match(/[0-9.]+,[0-9.]+/g).forEach((e => N.add(e))) })), u();
+    </script>
+</body>
+
+</html>
