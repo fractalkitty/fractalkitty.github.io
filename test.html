@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .poem-line { padding: 0.5rem; }
+        .shuffle-btn {
+            padding: 0.5rem 1rem;
+            background: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body style="text-align:center"><div id="p"></div><svg width="200" height="200" id="t"></svg><script>const l=[["Shall I compare thee to a summer's day?","Rough winds do shake the darling buds of May,"],["Thou art more lovely and more temperate:","And summer's lease hath all too short a date:"],["Sometime too hot the eye of heaven shines,","And every fair from fair sometime declines,"],["And often is his gold complexion dimm'd;","By chance or nature's changing course untrimm'd;"],["But thy eternal summer shall not fade","Nor shall Death brag thou wander'st in his shade,"],["Nor lose possession of that fair thou ow'st;","When in eternal lines to time thou grow'st:"],["So long as men can breathe or eyes can see,","So long lives this, and this gives life to thee."]],tr=["M90,50 L30,84.6 L70,84.6","M90,50 L10,50 L70,84.6","M90,50 L30,15.4 L70,84.6","M90,50 L70,15.4 L70,84.6","M70,84.6 L10,50 L30,84.6","M70,84.6 L30,15.4 L30,84.6","M70,84.6 L70,15.4 L30,84.6"],m={},d=x=>{let o='<button onclick="s()" style="padding:8px;background:#06c;color:#fff;border:0;margin:8px 0">Shuffle</button>';t.innerHTML=tr.map((p,i)=>`<path d="${p}z" fill="#eee" id="t${i}"/>`).join('');x.forEach((r,i)=>{m[r[0]]=i;m[r[1]]=i;o+=`<div onmouseover="h('${r[0]}')" onmouseout="u('${r[0]}')" style="padding:5px">${r[0]}</div><div onmouseover="h('${r[1]}')" onmouseout="u('${r[1]}')" style="padding:5px">${r[1]}</div>${i%2?'<br>':''}`});p.innerHTML=o};const h=s=>document.getElementById(`t${m[s]}`).setAttribute('fill','#06c'),u=s=>document.getElementById(`t${m[s]}`).setAttribute('fill','#eee'),s=_=>d(l.sort(()=>Math.random()-.5));d(l)</script></body>
+</html>
