@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+        <channel>
+            <title>stream of me | secret stickers</title>
+            <link>https://your-site-url.com/feed</link>
+            <description>A secret stream of stickers</description>
+            <language>en-us</language>
+            <item>
+                <title>Acorn Woodpecker</title>
+                <link>https://your-site-url.com/stickers/acorn_woodpecker.png</link>
+                <guid>https://your-site-url.com/stickers/acorn_woodpecker.png</guid>
+                <pubDate>Mon, 10 Feb 2025 00:00:00 +0000</pubDate>
+                <description>
+                    <![CDATA[
+                    <img src="https://your-site-url.com/stickers/acorn_woodpecker.png" alt="Acorn Woodpecker" style="max-width:100%;height:auto;"/>
+                    ]]>
+                </description>
+                <media:content 
+                    url="https://your-site-url.com/stickers/acorn_woodpecker.png"
+                    type="image/png"
+                    medium="image"/>
+            </item>
+        </channel>
+    </rss>

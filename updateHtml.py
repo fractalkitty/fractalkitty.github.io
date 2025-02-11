@@ -1,5 +1,6 @@
 from numbers_parser import Document
 from datetime import datetime
+import os
 import random
 
 
@@ -265,101 +266,105 @@ def create_distance_html():
     print("HTML generation complete")
 
 def create_micro_html():
-    print("Starting Micro HTML generation...")
-    
-    header = '''<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/micro.css" />
-  <title>micro journal | stream of me</title>
-</head>
-
-<body>
-  <nav class="home-nav" role="navigation" aria-label="Return to main navigation">
-    <a href="../index.html" class="home-link" aria-label="Return to homepage">
-      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="home-icon">
-        <path d="M12 3L4 9v12h16V9l-8-6z" stroke="currentColor" stroke-width="2" fill="none" />
-        <path d="M9 22v-8h6v8" stroke="currentColor" stroke-width="2" fill="none" />
-      </svg>
-    </a>
-  </nav>
-
-  <main class="container">
-    <h2>micro journal</h2>
-    <div class="micro-entries">'''
-
-    footer = '''
-    </div>
-  </main>
-</body>
-</html>'''
-
-    with open('./micro/index.html', 'w') as f:
-        f.write(header)
+        print("Starting Micro HTML generation...")
         
-    doc = Document('./streamof.numbers')
-    lightbox_counter = 1
-    start_date = datetime(2024, 12, 22)
+        header = '''<!DOCTYPE html>
+    <html lang="en">
     
-    for sheet in doc.sheets:
-        if sheet.name == 'Micro':
-            table = sheet.tables[0]
-            print(f"Found Micro sheet with {len(table.rows())} rows")
-            
-            for row in table.rows()[1:]:  # Skip header row
-                if len(row) >= 3:  # We need date, text, and possible image
-                    date = row[0].value if hasattr(row[0], 'value') else None
-                    text = row[1].value if hasattr(row[1], 'value') else None
-                    image = row[2].value if hasattr(row[2], 'value') else None
-                    
-                    try:
-                        # Convert the date string to datetime
-                        if isinstance(date, str):
-                            date = datetime.strptime(date, '%Y-%m-%d')
-                        
-                        day_number = (date - start_date).days + 1
-                        datetime_str = date.strftime('%Y-%m-%d')
-                        display_date = f"Day {day_number}: ({date.strftime('%-d %b %Y')})"
-                        
-                        # Create article with or without image
-                        if image and isinstance(image, str) and image.strip():
-                            # Article with image
-                            article = f'''
-      <article class="entry">
-        <time datetime="{datetime_str}">{display_date}</time>
-        <p>{text.strip()}</p>
-        <a href="#lightbox-{lightbox_counter}">
-          <img src="../assets/{image.strip()}" alt="{text.strip()}" loading="lazy" />
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="../css/style.css" />
+      <link rel="stylesheet" href="../css/micro.css" />
+      <title>micro journal | stream of me</title>
+    </head>
+    
+    <body>
+      <nav class="home-nav" role="navigation" aria-label="Return to main navigation">
+        <a href="../index.html" class="home-link" aria-label="Return to homepage">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="home-icon">
+            <path d="M12 3L4 9v12h16V9l-8-6z" stroke="currentColor" stroke-width="2" fill="none" />
+            <path d="M9 22v-8h6v8" stroke="currentColor" stroke-width="2" fill="none" />
+          </svg>
         </a>
-        <div id="lightbox-{lightbox_counter}" class="lightbox">
-          <a href="#">
-            <img src="../assets/{image.strip()}" alt="{text.strip()}" />
-          </a>
+      </nav>
+    
+      <main class="container">
+        <h2>micro journal</h2>
+        <div class="micro-entries">'''
+    
+        footer = '''
         </div>
-      </article>'''
-                            lightbox_counter += 1
-                        else:
-                            # Article without image
-                            article = f'''
-      <article class="entry">
-        <time datetime="{datetime_str}">{display_date}</time>
-        <p>{text.strip()}</p>
-      </article>'''
+      </main>
+    </body>
+    </html>'''
+    
+        with open('./micro/index.html', 'w') as f:
+            f.write(header)
+            
+        doc = Document('./streamof.numbers')
+        lightbox_counter = 1
+        start_date = datetime(2024, 12, 22)
+        
+        for sheet in doc.sheets:
+            if sheet.name == 'Micro':
+                table = sheet.tables[0]
+                print(f"Found Micro sheet with {len(table.rows())} rows")
+                
+                for row in table.rows()[1:]:  # Skip header row
+                    if len(row) >= 4:  # We need date, text, image, and alt text
+                        date = row[0].value if hasattr(row[0], 'value') else None
+                        text = row[1].value if hasattr(row[1], 'value') else None
+                        image = row[2].value if hasattr(row[2], 'value') else None
+                        alt_text = row[3].value if hasattr(row[3], 'value') else None
                         
-                        with open('./micro/index.html', 'a') as f:
-                            f.write(article)
-                                
-                    except Exception as e:
-                        print(f"Error processing row: {date}, {text}: {e}")
-
-    with open('./micro/index.html', 'a') as f:
-        f.write(footer)
-
-    print("HTML generation complete")
+                        try:
+                            # Convert the date string to datetime
+                            if isinstance(date, str):
+                                date = datetime.strptime(date, '%Y-%m-%d')
+                            
+                            day_number = (date - start_date).days + 1
+                            datetime_str = date.strftime('%Y-%m-%d')
+                            display_date = f"Day {day_number}: ({date.strftime('%-d %b %Y')})"
+                            
+                            # Use alt text if provided, otherwise fall back to entry text
+                            image_alt = alt_text.strip() if alt_text and isinstance(alt_text, str) else text.strip()
+                            
+                            # Create article with or without image
+                            if image and isinstance(image, str) and image.strip():
+                                # Article with image
+                                article = f'''
+          <article class="entry">
+            <time datetime="{datetime_str}">{display_date}</time>
+            <p>{text.strip()}</p>
+            <a href="#lightbox-{lightbox_counter}">
+              <img src="../assets/{image.strip()}" alt="{image_alt}" loading="lazy" />
+            </a>
+            <div id="lightbox-{lightbox_counter}" class="lightbox">
+              <a href="#">
+                <img src="../assets/{image.strip()}" alt="{image_alt}" />
+              </a>
+            </div>
+          </article>'''
+                                lightbox_counter += 1
+                            else:
+                                # Article without image
+                                article = f'''
+          <article class="entry">
+            <time datetime="{datetime_str}">{display_date}</time>
+            <p>{text.strip()}</p>
+          </article>'''
+                            
+                            with open('./micro/index.html', 'a') as f:
+                                f.write(article)
+                                    
+                        except Exception as e:
+                            print(f"Error processing row: {date}, {text}: {e}")
+    
+        with open('./micro/index.html', 'a') as f:
+            f.write(footer)
+    
+        print("HTML generation complete")
 
 def generate_tally_letter(category, value):
     if category == 'Sun':
@@ -498,12 +503,85 @@ def create_tallies_html():
         f.write(footer)
 
     print("HTML generation complete")
+def create_rss_feed():
+        print("Starting RSS feed generation...")
+        
+        # Create feed directory if it doesn't exist
+        os.makedirs('./feed', exist_ok=True)
+        
+        # RSS header with MIME type for images
+        rss_header = '''<?xml version="1.0" encoding="UTF-8" ?>
+    <rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+        <channel>
+            <title>stream of me | secret stickers</title>
+            <link>https://your-site-url.com/feed</link>
+            <description>A secret stream of stickers</description>
+            <language>en-us</language>'''
     
+        rss_footer = '''
+        </channel>
+    </rss>'''
+    
+        with open('./feed/index.xml', 'w') as f:
+            f.write(rss_header)
+            
+        doc = Document('./streamof.numbers')
+        
+        for sheet in doc.sheets:
+            if sheet.name == 'RSS':
+                table = sheet.tables[0]
+                print(f"Found RSS sheet with {len(table.rows())} rows")
+                
+                # Process rows in reverse to get newest first
+                for row in reversed(table.rows()[1:]):  # Skip header row
+                    if len(row) >= 3:  # We need date, image name, and title
+                        date = row[0].value if hasattr(row[0], 'value') else None
+                        image = row[1].value if hasattr(row[1], 'value') else None
+                        title = row[2].value if hasattr(row[2], 'value') else None
+                        
+                        if date and image and title:
+                            try:
+                                # Convert the date if it's a string
+                                if isinstance(date, str):
+                                    date = datetime.strptime(date, '%Y-%m-%d')
+                                
+                                # Format date for RSS (RFC 822 format)
+                                rss_date = date.strftime('%a, %d %b %Y %H:%M:%S +0000')
+                                
+                                # Create item entry with image
+                                item = f'''
+            <item>
+                <title>{title.strip()}</title>
+                <link>https://your-site-url.com/stickers/{image.strip()}</link>
+                <guid>https://your-site-url.com/stickers/{image.strip()}</guid>
+                <pubDate>{rss_date}</pubDate>
+                <description>
+                    <![CDATA[
+                    <img src="https://your-site-url.com/stickers/{image.strip()}" alt="{title.strip()}" style="max-width:100%;height:auto;"/>
+                    ]]>
+                </description>
+                <media:content 
+                    url="https://your-site-url.com/stickers/{image.strip()}"
+                    type="image/png"
+                    medium="image"/>
+            </item>'''
+                                
+                                with open('./feed/index.xml', 'a') as f:
+                                    f.write(item)
+                                        
+                            except Exception as e:
+                                print(f"Error processing row: {date}, {image}: {e}")
+    
+        with open('./feed/index.xml', 'a') as f:
+            f.write(rss_footer)
+    
+        print("RSS feed generation complete")    
 if __name__ == "__main__":
     create_birds_html()
     create_cinquains_html()
     create_distance_html()
     create_micro_html()
     create_tallies_html()
+    create_rss_feed()
 
     
