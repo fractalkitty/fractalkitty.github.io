@@ -506,14 +506,12 @@ def create_tallies_html():
 def create_rss_feed():
         print("Starting RSS feed generation...")
         
-        # Create feed directory if it doesn't exist
         os.makedirs('./feed', exist_ok=True)
         
-        # RSS header with MIME type for images
         rss_header = '''<?xml version="1.0" encoding="UTF-8" ?>
     <rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
         <channel>
-            <title>stream of me | stickers</title>
+            <title>stream of me | rss stickers</title>
             <link>https://streamof.me/feed</link>
             <description>Stickers!!!</description>
             <language>en-us</language>'''
@@ -532,8 +530,7 @@ def create_rss_feed():
                 table = sheet.tables[0]
                 print(f"Found RSS sheet with {len(table.rows())} rows")
                 
-                # Process rows in reverse to get newest first
-                for row in reversed(table.rows()[1:]):  # Skip header row
+                for row in table.rows()[1:]:  # Skip header row
                     if len(row) >= 3:  # We need date, image name, and title
                         date = row[0].value if hasattr(row[0], 'value') else None
                         image = row[1].value if hasattr(row[1], 'value') else None
@@ -541,25 +538,27 @@ def create_rss_feed():
                         
                         if date and image and title:
                             try:
-                                # Convert the date if it's a string
                                 if isinstance(date, str):
                                     date = datetime.strptime(date, '%Y-%m-%d')
                                 
-                                # Format date for RSS (RFC 822 format)
                                 rss_date = date.strftime('%a, %d %b %Y %H:%M:%S +0000')
                                 
-                                # Create item entry with image
+                                description = f'''<div style="width:100%; text-align:center; padding:20px;">
+        <div style="max-width:500px; margin:0 auto;">
+            <img src="https://streamof.me/stickers/{image.strip()}" 
+                 alt="{title.strip()}" 
+                 style="width:100%; height:auto; display:block;"/>
+            <p style="margin-top:10px;">{title.strip()}</p>
+        </div>
+    </div>'''
+                                
                                 item = f'''
             <item>
                 <title>{title.strip()}</title>
                 <link>https://streamof.me/stickers/{image.strip()}</link>
                 <guid>https://streamof.me/stickers/{image.strip()}</guid>
                 <pubDate>{rss_date}</pubDate>
-                <description>
-                    <![CDATA[
-                    <img src="https://streamof.me/stickers/{image.strip()}" alt="{title.strip()}" style="max-width:100%;height:auto;"/>
-                    ]]>
-                </description>
+                <description><![CDATA[{description}]]></description>
                 <media:content 
                     url="https://streamof.me/stickers/{image.strip()}"
                     type="image/png"
@@ -575,7 +574,7 @@ def create_rss_feed():
         with open('./feed/index.xml', 'a') as f:
             f.write(rss_footer)
     
-        print("RSS feed generation complete")    
+        print("RSS feed generation complete")  
 if __name__ == "__main__":
     create_birds_html()
     create_cinquains_html()

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
         <channel>
-            <title>stream of me | stickers</title>
+            <title>stream of me | rss stickers</title>
             <link>https://streamof.me/feed</link>
             <description>Stickers!!!</description>
             <language>en-us</language>
@@ -10,11 +10,14 @@
                 <link>https://streamof.me/stickers/acorn_woodpecker.png</link>
                 <guid>https://streamof.me/stickers/acorn_woodpecker.png</guid>
                 <pubDate>Mon, 10 Feb 2025 00:00:00 +0000</pubDate>
-                <description>
-                    <![CDATA[
-                    <img src="https://streamof.me/stickers/acorn_woodpecker.png" alt="Acorn Woodpecker" style="max-width:100%;height:auto;"/>
-                    ]]>
-                </description>
+                <description><![CDATA[<div style="width:100%; text-align:center; padding:20px;">
+        <div style="max-width:500px; margin:0 auto;">
+            <img src="https://streamof.me/stickers/acorn_woodpecker.png" 
+                 alt="Acorn Woodpecker" 
+                 style="width:100%; height:auto; display:block;"/>
+            <p style="margin-top:10px;">Acorn Woodpecker</p>
+        </div>
+    </div>]]></description>
                 <media:content 
                     url="https://streamof.me/stickers/acorn_woodpecker.png"
                     type="image/png"
