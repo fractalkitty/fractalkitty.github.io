@@ -512,9 +512,9 @@ def create_rss_feed():
         rss_header = '''<?xml version="1.0" encoding="UTF-8" ?>
     <rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
         <channel>
-            <title>stream of me | rss club stickers</title>
+            <title>stream of me | stickers</title>
             <link>https://streamof.me/feed</link>
-            <description>A stream of stickers only available through rss. • #RSS Club</description>
+            <description>A stream of stickers only available through rss.</description>
             <language>en-us</language>'''
     
         rss_footer = '''
