@@ -503,6 +503,7 @@ def create_tallies_html():
         f.write(footer)
 
     print("HTML generation complete")
+
 def create_rss_feed():
         print("Starting RSS feed generation...")
         
@@ -511,9 +512,9 @@ def create_rss_feed():
         rss_header = '''<?xml version="1.0" encoding="UTF-8" ?>
     <rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
         <channel>
-            <title>stream of me | rss stickers</title>
+            <title>stream of me | rss club stickers</title>
             <link>https://streamof.me/feed</link>
-            <description>Stickers!!!</description>
+            <description>A stream of stickers only available through rss. • #RSS Club</description>
             <language>en-us</language>'''
     
         rss_footer = '''
@@ -549,15 +550,17 @@ def create_rss_feed():
                  alt="{title.strip()}" 
                  style="width:100%; height:auto; display:block;"/>
             <p style="margin-top:10px;">{title.strip()}</p>
+            <p style="margin-top:5px; font-style:italic;">#RSS Club</p>
         </div>
     </div>'''
                                 
                                 item = f'''
             <item>
-                <title>{title.strip()}</title>
+                <title>{title.strip()} • #RSS Club</title>
                 <link>https://streamof.me/stickers/{image.strip()}</link>
                 <guid>https://streamof.me/stickers/{image.strip()}</guid>
                 <pubDate>{rss_date}</pubDate>
+                <category>RSS Club</category>
                 <description><![CDATA[{description}]]></description>
                 <media:content 
                     url="https://streamof.me/stickers/{image.strip()}"
@@ -574,7 +577,8 @@ def create_rss_feed():
         with open('./feed/index.xml', 'a') as f:
             f.write(rss_footer)
     
-        print("RSS feed generation complete")  
+        print("RSS feed generation complete")
+         
 if __name__ == "__main__":
     create_birds_html()
     create_cinquains_html()
