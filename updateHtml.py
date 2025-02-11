@@ -513,9 +513,9 @@ def create_rss_feed():
         rss_header = '''<?xml version="1.0" encoding="UTF-8" ?>
     <rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
         <channel>
-            <title>stream of me | secret stickers</title>
-            <link>https://your-site-url.com/feed</link>
-            <description>A secret stream of stickers</description>
+            <title>stream of me | stickers</title>
+            <link>https://streamof.me/feed</link>
+            <description>Stickers!!!</description>
             <language>en-us</language>'''
     
         rss_footer = '''
@@ -552,16 +552,16 @@ def create_rss_feed():
                                 item = f'''
             <item>
                 <title>{title.strip()}</title>
-                <link>https://your-site-url.com/stickers/{image.strip()}</link>
-                <guid>https://your-site-url.com/stickers/{image.strip()}</guid>
+                <link>https://streamof.me/stickers/{image.strip()}</link>
+                <guid>https://streamof.me/stickers/{image.strip()}</guid>
                 <pubDate>{rss_date}</pubDate>
                 <description>
                     <![CDATA[
-                    <img src="https://your-site-url.com/stickers/{image.strip()}" alt="{title.strip()}" style="max-width:100%;height:auto;"/>
+                    <img src="https://streamof.me/stickers/{image.strip()}" alt="{title.strip()}" style="max-width:100%;height:auto;"/>
                     ]]>
                 </description>
                 <media:content 
-                    url="https://your-site-url.com/stickers/{image.strip()}"
+                    url="https://streamof.me/stickers/{image.strip()}"
                     type="image/png"
                     medium="image"/>
             </item>'''
