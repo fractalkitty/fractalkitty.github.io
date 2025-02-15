@@ -45,5 +45,25 @@
                     type="image/png"
                     medium="image"/>
             </item>
+            <item>
+                <title>American Crow • #RSS Club</title>
+                <link>https://streamof.me/stickers/american_crow.png</link>
+                <guid>https://streamof.me/stickers/american_crow.png</guid>
+                <pubDate>Fri, 14 Feb 2025 00:00:00 +0000</pubDate>
+                <category>RSS Club</category>
+                <description><![CDATA[<div style="width:100%; text-align:center; padding:20px;">
+        <div style="max-width:500px; margin:0 auto;">
+            <img src="https://streamof.me/stickers/american_crow.png" 
+                 alt="American Crow" 
+                 style="width:100%; height:auto; display:block;"/>
+            <p style="margin-top:10px;">American Crow</p>
+            <p style="margin-top:5px; font-style:italic;">#RSS Club</p>
+        </div>
+    </div>]]></description>
+                <media:content 
+                    url="https://streamof.me/stickers/american_crow.png"
+                    type="image/png"
+                    medium="image"/>
+            </item>
         </channel>
     </rss>
