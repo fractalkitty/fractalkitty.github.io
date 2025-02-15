@@ -550,13 +550,13 @@ def create_rss_feed():
                  alt="{title.strip()}" 
                  style="width:100%; height:auto; display:block;"/>
             <p style="margin-top:10px;">{title.strip()}</p>
-            <p style="margin-top:5px; font-style:italic;">#RSS Club</p>
+            <p style="margin-top:5px; font-style:italic;">#stickers</p>
         </div>
     </div>'''
                                 
                                 item = f'''
             <item>
-                <title>{title.strip()} • #RSS Club</title>
+                <title>{title.strip()} • #stickers</title>
                 <link>https://streamof.me/stickers/{image.strip()}</link>
                 <guid>https://streamof.me/stickers/{image.strip()}</guid>
                 <pubDate>{rss_date}</pubDate>
