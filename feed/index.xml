@@ -65,5 +65,45 @@
                     type="image/png"
                     medium="image"/>
             </item>
+            <item>
+                <title>American Goldfinch • #stickers</title>
+                <link>https://streamof.me/stickers/american_goldfinch.png</link>
+                <guid>https://streamof.me/stickers/american_goldfinch.png</guid>
+                <pubDate>Thu, 27 Feb 2025 00:00:00 +0000</pubDate>
+                <category>RSS Club</category>
+                <description><![CDATA[<div style="width:100%; text-align:center; padding:20px;">
+        <div style="max-width:500px; margin:0 auto;">
+            <img src="https://streamof.me/stickers/american_goldfinch.png" 
+                 alt="American Goldfinch" 
+                 style="width:100%; height:auto; display:block;"/>
+            <p style="margin-top:10px;">American Goldfinch</p>
+            <p style="margin-top:5px; font-style:italic;">#stickers</p>
+        </div>
+    </div>]]></description>
+                <media:content 
+                    url="https://streamof.me/stickers/american_goldfinch.png"
+                    type="image/png"
+                    medium="image"/>
+            </item>
+            <item>
+                <title>American Kestrel • #stickers</title>
+                <link>https://streamof.me/stickers/american_kestrel.png</link>
+                <guid>https://streamof.me/stickers/american_kestrel.png</guid>
+                <pubDate>Fri, 28 Feb 2025 00:00:00 +0000</pubDate>
+                <category>RSS Club</category>
+                <description><![CDATA[<div style="width:100%; text-align:center; padding:20px;">
+        <div style="max-width:500px; margin:0 auto;">
+            <img src="https://streamof.me/stickers/american_kestrel.png" 
+                 alt="American Kestrel" 
+                 style="width:100%; height:auto; display:block;"/>
+            <p style="margin-top:10px;">American Kestrel</p>
+            <p style="margin-top:5px; font-style:italic;">#stickers</p>
+        </div>
+    </div>]]></description>
+                <media:content 
+                    url="https://streamof.me/stickers/american_kestrel.png"
+                    type="image/png"
+                    medium="image"/>
+            </item>
         </channel>
     </rss>
