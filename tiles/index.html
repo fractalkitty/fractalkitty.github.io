@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/tiles.css" />
+    <title>horizontal and vertical lines</title>
+  </head>
+  <body>
+    <nav
+      class="home-nav"
+      role="navigation"
+      aria-label="Return to main navigation"
+    >
+      <a href="../index.html" class="home-link" aria-label="Return to homepage">
+        <svg
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+          aria-hidden="true"
+          class="home-icon"
+        >
+          <path
+            d="M12 3L4 9v12h16V9l-8-6z"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+          />
+          <path
+            d="M9 22v-8h6v8"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+          />
+        </svg>
+      </a>
+    </nav>
+    <main class="container">
+      <h2>hour-by-hour tiles</h2>
+      <p>a set of 24</p>
+      <div class="grid">
+        <div class="tile">
+          <img src="tile (7).jpg" alt="Tile 1" />
+        </div>
+      </div>
+    </main>
+    <script>
+      function createGrid() {
+        const grid = document.querySelector(".grid");
+        const hour = new Date().getHours();
+        const tileNumber = hour % 24 || 9;
+        let gridContent = "";
+        for (let i = 0; i < 25; i++) {
+          gridContent += `
+            <div class="tile">
+              <img src="tile (${tileNumber}).jpg" alt="Tile ${i + 1}" />
+            </div>
+          `;
+        }
+        grid.innerHTML = gridContent;
+      }
+      document.addEventListener("DOMContentLoaded", createGrid);
+    </script>
+    <footer>
+      <a
+        href="../genuary/vertical-or-horizontal-lines-only/index.html"
+        class="tile-link"
+      >
+        <img src="tile (23).jpg" alt="Tiles page" />
+      </a>
+    </footer>
+  </body>
+</html>

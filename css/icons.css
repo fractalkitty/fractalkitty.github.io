@@ -1,0 +1,112 @@
+/* Base styles */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+.container {
+  /* display: block; */
+  /* max-width: 600px; */
+  margin: 0px;
+  padding: 0 1rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon grid */
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 150px);
+  gap: 2rem;
+  padding: 1rem;
+  margin: auto;
+  text-align: center;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon card */
+.icon-card {
+  aspect-ratio: 1;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  max-width: 200px;
+}
+
+.icon-card:hover,
+.icon-card:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  outline: none;
+}
+
+/* Icon styling */
+.icon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+/* Icon name */
+.icon-name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+  border-radius: 0 0 4px 4px;
+}
+.icon-img {
+  width: 100px;
+}
+
+.icon-card:hover .icon-name,
+.icon-card:focus .icon-name {
+  opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .container {
+    margin-top: 4rem;
+  }
+
+  .icon-grid {
+    grid-template-columns: repeat(3, 100px);
+    gap: 1rem;
+  }
+
+  .icon {
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 380px) {
+  .container {
+    margin-top: 4rem;
+  }
+
+  .icon-grid {
+    grid-template-columns: repeat(1, 150px);
+    gap: 1rem;
+  }
+
+  .icon {
+    font-size: 2.5rem;
+  }
+}

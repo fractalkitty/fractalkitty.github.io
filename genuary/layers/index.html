@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/tiles.css" />
+    <title>layers</title>
+    <style>
+      .tile img {
+        transition: transform 0.3s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <nav
+      class="home-nav"
+      role="navigation"
+      aria-label="Return to main navigation"
+    >
+      <a
+        href="../../index.html"
+        class="home-link"
+        aria-label="Return to homepage"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+          aria-hidden="true"
+          class="home-icon"
+        >
+          <path
+            d="M12 3L4 9v12h16V9l-8-6z"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+          />
+          <path
+            d="M9 22v-8h6v8"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+          />
+        </svg>
+      </a>
+    </nav>
+    <main class="container">
+      <h2>Layers upon layers upon layers</h2>
+      <p>...and then woven and rotated</p>
+      <p>[hourly tiles]</p>
+      <div class="grid">
+        <div class="tile">
+          <img src="layer (7).jpg" alt="Tile 1" />
+        </div>
+      </div>
+    </main>
+    <script>
+      function createGrid() {
+        const grid = document.querySelector(".grid");
+        const hour = new Date().getHours();
+        const tileNumber = hour % 24 || 9;
+        let gridContent = "";
+        for (let i = 0; i < 25; i++) {
+          const rotation = i * 90; // Each tile rotates 90 degrees more than the previous one
+          gridContent += `
+            <div class="tile">
+              <img 
+                src="layer (${tileNumber}).jpg" 
+                alt="Tile ${i + 1}" 
+                style="transform: rotate(${rotation}deg);"
+              />
+            </div>
+          `;
+        }
+        grid.innerHTML = gridContent;
+      }
+      document.addEventListener("DOMContentLoaded", createGrid);
+    </script>
+    <footer>
+      <a href="layers.html" class="tile-link">
+        <img src="layer (23).jpg" alt="Tiles page" />
+      </a>
+    </footer>
+  </body>
+</html>

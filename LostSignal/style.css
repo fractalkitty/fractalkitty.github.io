@@ -1,0 +1,296 @@
+/* Modern, minimal black and white design for comic adventure */
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --button-bg: #ffffff;
+  --button-text: #000000;
+  --button-hover: #d4e8f1;
+  --home-button-size: 40px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: white;
+  color: black;
+  line-height: 1.6;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Accessibility focus styles */
+:focus {
+  outline: 3px solid rgba(0, 0, 0, 0.3);
+  outline-offset: 2px;
+}
+
+/* Home/restart button */
+.home-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: var(--home-button-size);
+  height: var(--home-button-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 1px solid var(--text-color);
+  border-radius: 50%;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  z-index: 100;
+}
+
+.home-button:hover,
+.home-button:focus {
+  opacity: 1;
+  background-color: #f0f0f0;
+}
+
+.home-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* Comic content */
+.comic-container {
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  width: 450px;
+  height: 450px;
+  text-align: center;
+}
+
+.comic-image {
+  width: 400px;
+  height: 400px;
+  background: white;
+  /* border: 1px solid #eee; */
+}
+
+.ending-image {
+  width: 100%;
+  height: auto;
+  background: white;
+  /* border: 1px solid #eee; */
+}
+
+.story-text {
+  max-width: 400px;
+  margin: 15px auto;
+  font-size: 18px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+h1 {
+  font-size: 40px;
+  color: black;
+  text-align: center;
+}
+h3 {
+  font-size: 20px;
+  color: black;
+  text-align: center;
+}
+
+/* Choice buttons */
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: 5px auto;
+}
+.choices2 {
+  display: block;
+  width: 300px;
+  grid-template-columns: repeat(1fr, 3);
+  gap: 10px;
+  margin: 50px auto;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.choice-button2,
+.choice-button {
+  display: block;
+  padding: 15px 25px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  text-decoration: none;
+  border: 1px solid rgb(224, 224, 224);
+  box-shadow: 2px 2px 2px 1px rgb(161, 161, 161);
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.choice-button3 {
+  width: 100%;
+  display: block;
+  margin: 5px;
+  padding: 15px 25px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  text-decoration: none;
+  border: 1px solid rgb(224, 224, 224);
+  box-shadow: 2px 2px 2px 1px rgb(161, 161, 161);
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.choice-button:hover,
+.choice-button:focus,
+.choice-button3:hover,
+.choice-button3:focus {
+  background-color: var(--button-hover);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Page footer */
+footer {
+  margin-top: auto;
+  text-align: center;
+  font-size: 14px;
+  padding: 20px 0;
+  opacity: 0.7;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 1em;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --button-bg: #000000;
+    --button-text: #ffffff;
+    --button-hover: #333333;
+  }
+
+  .choice-button {
+    border: 2px solid black;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --button-bg: #ffffff;
+    --button-text: #000000;
+    --button-hover: #e0e0e0;
+  }
+}
+
+/* Responsive design adjustments */
+@media (min-width: 768px) {
+  .choices {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .choice-button {
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .comic-container {
+    width: 100%;
+    height: auto;
+    min-height: 320px;
+    margin: 10px auto;
+  }
+
+  .comic-image {
+    width: 100%;
+    height: auto;
+    max-width: 320px;
+    object-fit: contain;
+  }
+
+  .story-text {
+    width: 100%;
+    max-width: 320px;
+    font-size: 16px;
+    min-height: 80px;
+  }
+
+  .choices {
+    width: 100%;
+    min-height: 80px;
+  }
+
+  .choices2 {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  main#main-content {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-button {
+    top: 10px;
+    left: 10px;
+    --home-button-size: 30px;
+  }
+
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+}

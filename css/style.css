@@ -1,0 +1,244 @@
+/* Base styles */
+body {
+  margin: 0;
+  padding: 2px;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  background: rgb(230, 235, 240);
+  color: rgb(50, 60, 80);
+}
+
+h2,
+h3 {
+  display: inline-block;
+  margin: 0px auto;
+  padding-top: 25px;
+  width: 100%;
+  text-align: center;
+}
+
+.nav-circle {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 1rem;
+}
+
+.connections {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  pointer-events: none;
+}
+
+.connections line {
+  stroke: rgba(50, 60, 80, 0.7);
+  stroke-width: 2;
+  transition: stroke 0.2s;
+}
+
+.nav-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+
+.nav-item {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border: 2px solid rgb(50, 60, 80);
+  border-radius: 50%;
+  background: white;
+  text-decoration: none;
+  color: rgb(50, 60, 80);
+  transform: translate(-50%, -50%);
+  transition: background-color 0.2s;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.nav-item:hover,
+.nav-item:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Circle positioning */
+.nav-item:nth-child(1) {
+  /* birds */
+  top: 25px;
+  left: 200px;
+}
+
+.nav-item:nth-child(2) {
+  /* walking */
+  top: 125px;
+  left: 375px;
+}
+
+.nav-item:nth-child(3) {
+  /* meditations */
+  top: 275px;
+  left: 375px;
+}
+
+.nav-item:nth-child(4) {
+  /* icons */
+  top: 375px;
+  left: 200px;
+}
+
+.nav-item:nth-child(5) {
+  /* cinquains */
+  top: 275px;
+  left: 25px;
+}
+
+.nav-item:nth-child(6) {
+  /* journal */
+  top: 125px;
+  left: 25px;
+}
+
+/* Screen reader only content */
+.screen-reader-content {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Mobile layout */
+@media (max-width: 500px) {
+  .connections {
+    display: none;
+  }
+
+  .nav-container {
+    width: 50%;
+    max-width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    margin: auto;
+  }
+
+  .nav-item {
+    position: static;
+    width: 100%;
+    height: 50px;
+    transform: none;
+    border-radius: 40px;
+    margin: auto;
+  }
+  /* Circle positioning */
+}
+
+/* Highlight connections on hover */
+.nav-item[data-node="birds"]:hover ~ .connections line,
+.nav-item[data-node="walking"]:hover ~ .connections line,
+.nav-item[data-node="meditations"]:hover ~ .connections line,
+.nav-item[data-node="icons"]:hover ~ .connections line,
+.nav-item[data-node="cinquains"]:hover ~ .connections line,
+.nav-item[data-node="journal"]:hover ~ .connections line {
+  stroke: rgba(50, 60, 80, 0.8);
+  stroke-width: 2;
+}
+.home-nav {
+  position: inline-block;
+  width: 100%;
+  text-align: center;
+  margin: 20px auto;
+  z-index: 100;
+}
+
+.home-link {
+  display: inline-block;
+  padding: 0.5rem;
+  color: rgb(50, 60, 80);
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.home-link:hover,
+.home-link:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.home-icon {
+  display: block;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  margin-top: auto;
+  /* Ensure sufficient contrast */
+  background-color: #fff;
+}
+
+.tile-link {
+  /* Make clickable area larger than image */
+  padding: 10px;
+  display: inline-block;
+}
+
+.tile-link:focus {
+  outline: 2px solid rgb(50, 60, 80);
+  outline-offset: 2px;
+}
+
+.tile-link img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+footer img {
+  display: flex;
+  background: rgb(20, 30, 40);
+  max-width: 50px;
+  margin: auto;
+  padding: 0px;
+  box-shadow: 2px 2px 2px 2px rgb(183, 183, 183);
+  cursor: pointer;
+}
+.lightbox1 {
+  display: none;
+  position: fixed;
+  top: 10vh;
+  background: rgb(20, 30, 40, 0.9);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+.lightbox1:target {
+  display: flex;
+}
+
+.lightbox1 img {
+  max-height: 80vh;
+  max-width: 80vw;
+  margin: auto;
+  padding: 0;
+  box-shadow: none;
+}
