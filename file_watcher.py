@@ -6,7 +6,7 @@ import sys
 import threading
 
 
-venv_path = "/Users/fk/Desktop/streamof/myenv/lib/python3.*/site-packages"
+venv_path = "/Users/fk/Desktop/stream_of_me_7-23/numbers_env/lib/python3.*/site-packages"
 sys.path.insert(0, venv_path)
 
 from watchdog.observers import Observer
@@ -31,7 +31,7 @@ class NumbersFileHandler(FileSystemEventHandler):
     def rebuild_after_delay(self, file_path):
         print(f"30 seconds passed, rebuilding for {file_path}...")
         try:
-            result = subprocess.run(['bash', '-c', 'cd /Users/fk/Desktop/streamof && source myenv/bin/activate && python3 updateHtml.py && git add . && git commit -m "Auto-update - $(date)" && git push origin main'], 
+            result = subprocess.run(['bash', '-c', 'cd /Users/fk/Desktop/stream_of_me_7-23 && source numbers_env/bin/activate && python3 updateHtml.py && git add . && git commit -m "Auto-update - $(date)" && git push origin main'],
                                   capture_output=True, 
                                   text=True)
             print("Rebuild output:", result.stdout)
@@ -42,7 +42,7 @@ class NumbersFileHandler(FileSystemEventHandler):
             print(f"Error running rebuild: {e}")
 
 if __name__ == "__main__":
-    watch_path = "/Users/fk/Desktop/streamof"
+    watch_path = "/Users/fk/Desktop/stream_of_me_7-23"
     
     event_handler = NumbersFileHandler()
     observer = Observer()
