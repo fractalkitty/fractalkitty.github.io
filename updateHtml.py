@@ -493,7 +493,7 @@ def create_tallies_html():
                         category_html = f'''
       <div class="category">
         <h2>{title}</h2>
-        <p class="tally" aria-label="{count} {title}">{tally_string}</p>
+        <p class="tally" aria-label="{count} {title}"><span aria-hidden="true">{tally_string}</span></p>
       </div>'''
                         
                         with open('./tallies/index.html', 'a') as f:
