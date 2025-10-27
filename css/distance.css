@@ -44,17 +44,17 @@ h2 {
   display: none;
   position: fixed;
   border: 1px solid #ccc;
-  top: 70%;
-  left: 50%;
+  bottom: 50%;
+  left: 0%;
   transform: translate(-50%, 0%);
   background: rgba(255, 255, 255, 0.9);
   color: rgb(53, 53, 53);
   padding: 1rem;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 12px;
   text-align: center;
   z-index: 99999;
-  max-width: 80vw;
+  max-width: 140vw;
   margin: 0;
   cursor: auto;
 }
@@ -97,7 +97,7 @@ h2 {
   position: absolute;
   bottom: 100%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateY(120%);
   background: rgba(0, 0, 0, 0.8);
   color: white;
   padding: 4px 8px;
@@ -116,6 +116,7 @@ h2 {
   background: rgba(0, 0, 0, 0.5);
   z-index: 99998;
   cursor: auto;
+  
 }
 
 .final-row {
